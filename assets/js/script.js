@@ -21,50 +21,50 @@ $(document).ready(function(){
 
     var scroll = $("#wrapper .img-container");
     $("#wrapper .navigation-button.left").click(function(){
-        var item =   $(".item");
-        var location = $('.item.active').attr('data-location');
+        var item =   $("#wrapper .item");
+        var location = $('#wrapper .item.active').attr('data-location');
         item.removeClass('active');
         for (i = 0; i < item.length; i++) {
             var j = item.length - 1;
             if(location === '0'){
                 item.eq(j).addClass('active');
                 scroll.animate({scrollLeft: $(item.eq(j)).offset().left}, '500');
-                var src = $('.item.active img').attr("src"); ;                 //var src = selected.closest(item[i]).find('item').attr('src');
+                var src = $('#wrapper .item.active img').attr("src"); ;                 //var src = selected.closest(item[i]).find('item').attr('src');
                 $('#wrapper .showImg img').attr("src", src);
             }
             else{
                 if(location === i.toString()){
                     item.eq(i-1).addClass('active');
-                    var leftPos = $('.img-container').scrollLeft();
+                    var leftPos = $('#wrapper .img-container').scrollLeft();
                     $("#wrapper .img-container").animate({scrollLeft: leftPos - 94}, 1);
-                    var src = $('.item.active img').attr("src"); ;                 //var src = selected.closest(item[i]).find('item').attr('src');
+                    var src = $('#wrapper .item.active img').attr("src"); ;                 //var src = selected.closest(item[i]).find('item').attr('src');
                     $('#wrapper .showImg img').attr("src", src);
                 }
             }
         }
-        $('.example').izoomify();
+       $('.example').izoomify();
 
 
     });
     $("#wrapper .navigation-button.right").click(function(){
-        var item =   $(".item");
-        var location = $('.item.active').attr('data-location');
+        var item =   $("#wrapper .item");
+        var location = $('#wrapper .item.active').attr('data-location');
         item.removeClass('active');
         for (i = 0; i < item.length; i++) {
             var j = item.length - 1;
             if(location === j.toString()){
                 item.eq(0).addClass('active');
-                scroll.animate({scrollLeft: $(item.eq(0)).offset().left}, '500');
+                $("#wrapper .img-container").animate({scrollLeft: 0}, 1);
                 var src = $('.item.active img').attr("src"); ;                 //var src = selected.closest(item[i]).find('item').attr('src');
                 $('#wrapper .showImg img').attr("src", src);
             }
             else{
                 if(location === i.toString()){
                     item.eq(i+1).addClass('active');
-                    var leftPos = $('.img-container').scrollLeft();
+                    var leftPos = $('#wrapper .img-container').scrollLeft();
                     $("#wrapper .img-container").animate({scrollLeft: leftPos + 94}, 1);
                     
-                    var src = $('.item.active img').attr("src"); ;                 //var src = selected.closest(item[i]).find('item').attr('src');
+                    var src = $('#wrapper .item.active img').attr("src"); ;                 //var src = selected.closest(item[i]).find('item').attr('src');
                     $('#wrapper .showImg img').attr("src", src);
                 }
             }
@@ -82,10 +82,11 @@ $(document).ready(function(){
 });
 
 
-/*
+
 $(document).ready(function(){
+
     var arrObject = new Array();
-    var item = $(".item");
+    var item = $("#wrapper .item");
     for (i = 0; i < item.length; i++) {
         var k = '.jj'+i.toString();
         arrObject.push(k);
@@ -93,13 +94,13 @@ $(document).ready(function(){
     }            
     function load_data(j){
             const isHover = e => e.parentElement.querySelector(':hover') === e;    
-            const myDiv = document.querySelector('.item'+j);
+            const myDiv = document.querySelector('#wrapper .item'+j);
         var src = $('#wrapper .active .showImg img').attr("src");
         document.addEventListener('mousemove', function checkHover() {
         const hovered = isHover(myDiv);
         if(hovered !== checkHover.hovered) {
             if(hovered){
-                var s =  document.querySelector(j+' img').getAttribute('src');
+                var s =  document.querySelector('#wrapper '+j+' img').getAttribute('src');
                 $('#wrapper .showImg img').attr("src",s);
             }
             else{
@@ -112,7 +113,7 @@ $(document).ready(function(){
 
 
     })
-    */
+    
 
 
     $(document).ready(function(){
